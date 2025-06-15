@@ -34,6 +34,7 @@ code {
   display: flex;
   flex-direction: column;
   gap: 15px; /* Space between sections */
+  width: 100%; /* Ensure it takes full width of #root */
 }
 
 .header {
@@ -58,7 +59,7 @@ code {
   gap: 10px;
 }
 
-.search-option-card {
+.search-option { /* Renamed from .search-option-card */
   background-color: #f7f7f7;
   border-radius: 8px;
   padding: 15px;
@@ -70,19 +71,20 @@ code {
   transition: background-color 0.3s ease;
   min-height: 90px; /* Consistent height for cards */
   justify-content: center;
+  border: none; /* Ensure no default button border */
 }
 
-.search-option-card:hover {
+.search-option:hover { /* Renamed from .search-option-card:hover */
   background-color: #eaeaea;
 }
 
-.search-option-card .icon {
+.search-option .icon { /* Renamed from .search-option-card .icon */
   font-size: 2em; /* Adjust icon size */
   margin-bottom: 8px;
   color: #007bff; /* Primary blue for icons */
 }
 
-.search-option-card .label {
+.search-option .label { /* Renamed from .search-option-card .label */
   font-size: 0.9em;
   font-weight: bold;
   color: #333;
@@ -107,7 +109,7 @@ code {
   color: #007bff;
 }
 
-.view-map-button {
+.map-button { /* Renamed from .view-map-button */
   background-color: #007bff; /* Blue button */
   color: white;
   padding: 15px;
@@ -120,7 +122,7 @@ code {
   width: 100%;
 }
 
-.view-map-button:hover {
+.map-button:hover { /* Renamed from .view-map-button:hover */
   background-color: #0056b3;
 }
 
@@ -196,48 +198,6 @@ code {
   overflow-x: auto;
 }
 
-/* 최근 검색 목록 스타일 */
-.recent-searches-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px; /* space-y-4 */
-}
-
-.recent-search-item {
-  padding: 12px; /* p-3 */
-  background-color: #f9fafb; /* bg-gray-50 */
-  border-radius: 6px; /* rounded-md */
-  border: 1px solid #e5e7eb; /* border border-gray-200 */
-}
-
-.recent-search-item p {
-  margin-bottom: 4px;
-}
-
-.recent-search-item p:last-child {
-  margin-bottom: 0;
-}
-
-.item-address {
-  color: #1f2937; /* text-gray-800 */
-  font-weight: 600; /* font-semibold */
-}
-
-.item-road-address {
-  color: #374151; /* text-gray-700 */
-  font-size: 14px; /* text-sm */
-}
-
-.item-violation {
-  color: #dc2626; /* text-red-600 */
-  font-weight: 500; /* font-medium */
-}
-
-.item-description {
-  color: #4b5563; /* text-gray-600 */
-  font-size: 14px; /* text-sm */
-}
-
 /* 모달 닫기 버튼 스타일 */
 .message-modal-close-button {
   position: absolute;
@@ -277,4 +237,357 @@ code {
 .message-modal-confirm-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:outline-none focus:shadow-outline */
+}
+
+/* RecentSearchesScreen 전용 스타일 */
+.recent-searches-screen {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f0f2f5; /* Light gray background matching body */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px; /* Enough padding for the Clear All button */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.recent-searches-header {
+  width: 100%;
+  max-width: 400px; /* Match #root max-width */
+  display: flex;
+  align-items: center;
+  padding: 16px 20px; /* Adjusted padding to match #root */
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 24px;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.back-arrow {
+  font-size: 30px;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: color 0.2s;
+  margin-right: 15px;
+}
+
+.back-arrow:hover {
+  color: #000;
+}
+
+.header-text-container {
+  flex-grow: 1;
+}
+
+.header-title-recent {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.header-subtitle-recent {
+  font-size: 14px;
+  color: #666;
+}
+
+.recent-searches-list-container {
+  width: 100%;
+  max-width: 400px; /* Match #root max-width */
+  padding: 0 20px; /* Adjusted padding to match #root */
+  box-sizing: border-box;
+}
+
+.recent-searches-list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recent-search-item-card {
+  display: flex;
+  align-items: flex-start; /* Align items to the start for multi-line content */
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.recent-search-item-card:hover {
+  transform: translateY(-3px);
+}
+
+.item-icon {
+  font-size: 24px;
+  margin-right: 15px;
+  color: #3b82f6; /* Blue for location icon */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.item-content-wrapper { /* New style for the wrapper of address, violation, description */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Space between lines of text */
+}
+
+.item-address-display { /* Specific style for address line */
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.item-violation-status-text { /* Specific style for violation status and date */
+  font-size: 13px;
+  color: #777;
+  line-height: 1.3;
+}
+
+.item-violation-description { /* Specific style for violation description */
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+  white-space: normal; /* Allow text to wrap */
+  word-break: break-word; /* Break long words */
+}
+
+
+.item-arrow {
+  font-size: 20px;
+  color: #bbb;
+  margin-left: 15px;
+  align-self: center; /* Center the arrow vertically */
+  flex-shrink: 0; /* Prevent arrow from shrinking */
+}
+
+.clear-all-button {
+  background-color: #007bff; /* Blue color */
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 30px;
+  border-radius: 25px; /* Pill shape */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  margin-top: 30px; /* Space from the list */
+  width: calc(100% - 40px); /* Full width with #root padding */
+  max-width: 360px; /* Max width for button, derived from #root max-width - 2*padding */
+}
+
+.clear-all-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.clear-all-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-results-message {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+/* SearchResultsScreen specific styles */
+.search-results-screen {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f0f2f5; /* Light gray background matching body */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px; /* Enough padding for the bottom */
+  box-sizing: border-box;
+}
+
+.search-results-header {
+  width: 100%;
+  max-width: 400px; /* Match #root max-width */
+  display: flex;
+  align-items: center;
+  padding: 16px 20px; /* Adjusted padding to match #root */
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 15px; /* Adjust spacing */
+  box-sizing: border-box;
+}
+
+.header-title-results { /* New class for search results header title */
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.search-filters {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 10px; /* Gap between filter items */
+}
+
+.filter-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.filter-dropdown:hover {
+  background-color: #f0f0f0;
+}
+
+.filter-label {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 3px;
+}
+
+.filter-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.filter-value .arrow-down {
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.search-results-list-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.search-results-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Gap between search result cards */
+}
+
+.search-result-item-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px; /* Slightly less rounded than recent searches */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.search-result-item-card:hover {
+  transform: translateY(-2px);
+}
+
+.search-result-item-card .item-icon { /* Reusing item-icon from RecentSearchesScreen */
+  font-size: 24px;
+  margin-right: 15px;
+  color: #007bff; /* Primary blue for location icon */
+}
+
+.search-result-item-card .item-details { /* Reusing item-details */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-item-card .item-main-text { /* Reusing item-main-text */
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.search-result-item-card .item-sub-text { /* Reusing item-sub-text */
+  font-size: 13px;
+  color: #777;
+}
+
+.item-status { /* New style for status badge */
+  background-color: #f8d7da; /* Light red for violation */
+  color: #721c24; /* Dark red text */
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+  white-space: nowrap; /* Prevent wrapping */
+  text-align: center;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 600px) {
+  #root {
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .app-container {
+    padding: 20px; /* Re-add padding to app-container for smaller screens */
+  }
+
+  .recent-searches-screen {
+    padding: 0; /* Remove padding from screen itself */
+  }
+
+  .recent-searches-header,
+  .search-results-header { /* Apply to both headers */
+    max-width: none;
+    border-radius: 0; /* No border-radius on smaller screens */
+    padding: 16px; /* Default padding for header */
+  }
+
+  .recent-searches-list-container,
+  .search-results-list-container { /* Apply to both list containers */
+    max-width: none;
+    padding: 0 16px; /* Default padding for list container */
+  }
+
+  .search-filters {
+    max-width: none;
+    border-radius: 0;
+    padding: 10px 16px; /* Adjust padding */
+  }
+
+  .clear-all-button {
+    max-width: none;
+    width: calc(100% - 32px); /* Adjust padding */
+    margin: 30px auto 0 auto; /* Center with top margin */
+  }
 }
