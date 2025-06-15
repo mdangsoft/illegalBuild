@@ -139,3 +139,142 @@ code {
 .info-message .icon {
   font-size: 1.2em;
 }
+
+/* 메시지 모달 오버레이 스타일 */
+.message-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(107, 114, 128, 0.5); /* bg-gray-600 bg-opacity-50 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* p-4 */
+  z-index: 50; /* z-50 */
+}
+
+/* 메시지 모달 콘텐츠 스타일 */
+.message-modal-content {
+  background-color: #ffffff; /* bg-white */
+  padding: 24px; /* p-6 */
+  border-radius: 8px; /* rounded-lg */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-xl */
+  max-width: 480px; /* max-w-sm */
+  width: 100%;
+  position: relative;
+}
+
+.message-modal-title {
+  font-size: 24px; /* text-xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 16px; /* mb-4 */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.modal-scroll-area {
+  max-height: 240px; /* max-h-60 */
+  overflow-y: auto;
+  margin-bottom: 16px; /* mb-4 */
+}
+
+.modal-text {
+  color: #374151; /* text-gray-700 */
+}
+
+.modal-text.pre-wrap {
+  white-space: pre-wrap;
+}
+
+.modal-pre-formatted {
+  background-color: #f3f4f6; /* bg-gray-100 */
+  padding: 12px; /* p-3 */
+  border-radius: 4px; /* rounded */
+  font-size: 14px; /* text-sm */
+  color: #1f2937; /* text-gray-800 */
+  overflow-x: auto;
+}
+
+/* 최근 검색 목록 스타일 */
+.recent-searches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* space-y-4 */
+}
+
+.recent-search-item {
+  padding: 12px; /* p-3 */
+  background-color: #f9fafb; /* bg-gray-50 */
+  border-radius: 6px; /* rounded-md */
+  border: 1px solid #e5e7eb; /* border border-gray-200 */
+}
+
+.recent-search-item p {
+  margin-bottom: 4px;
+}
+
+.recent-search-item p:last-child {
+  margin-bottom: 0;
+}
+
+.item-address {
+  color: #1f2937; /* text-gray-800 */
+  font-weight: 600; /* font-semibold */
+}
+
+.item-road-address {
+  color: #374151; /* text-gray-700 */
+  font-size: 14px; /* text-sm */
+}
+
+.item-violation {
+  color: #dc2626; /* text-red-600 */
+  font-weight: 500; /* font-medium */
+}
+
+.item-description {
+  color: #4b5563; /* text-gray-600 */
+  font-size: 14px; /* text-sm */
+}
+
+/* 모달 닫기 버튼 스타일 */
+.message-modal-close-button {
+  position: absolute;
+  top: 12px; /* top-3 */
+  right: 12px; /* right-3 */
+  color: #6b7280; /* text-gray-500 */
+  font-size: 32px; /* text-2xl */
+  line-height: 1; /* 글자와 박스 간격 조절 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.message-modal-close-button:hover {
+  color: #374151; /* hover:text-gray-700 */
+}
+
+/* 모달 확인 버튼 스타일 */
+.message-modal-confirm-button {
+  margin-top: 16px; /* mt-4 */
+  width: 100%;
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: #ffffff; /* text-white */
+  font-weight: 700; /* font-bold */
+  padding: 8px 16px; /* py-2 px-4 */
+  border-radius: 4px; /* rounded */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.message-modal-confirm-button:hover {
+  background-color: #2563eb; /* hover:bg-blue-600 */
+}
+
+.message-modal-confirm-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:outline-none focus:shadow-outline */
+}
